@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,10 +19,10 @@ class MerchSaleResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'amount' => number_format($this->amount, 2, '.', ' '),
-            'price' => number_format($this->price, 2, '.', ' '),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'amount' => Helpers::formatAmount($this->amount),
+            'price' => Helpers::formatAmount($this->price),
+            'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
+            'updated_at' => $this->updated_at?->format('Y-m-d H:i:s'),
         ];
     }
 }

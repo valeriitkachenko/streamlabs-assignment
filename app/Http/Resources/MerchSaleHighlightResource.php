@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Helpers\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SubscriberResource extends JsonResource
+class MerchSaleHighlightResource extends JsonResource
 {
 
     /**
@@ -16,11 +17,8 @@ class SubscriberResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
             'name' => $this->name,
-            'subscription_tier' => new SubscriptionTierResource($this->subscriptionTier),
-            'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
-            'updated_at' => $this->updated_at?->format('Y-m-d H:i:s'),
+            'total_amount' => Helpers::formatAmount($this->total_amount),
         ];
     }
 }

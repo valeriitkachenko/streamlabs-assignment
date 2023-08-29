@@ -14,7 +14,12 @@ class Event extends Model
     protected $fillable = [
         'user_id',
         'eventable_type',
-        'eventable_id'
+        'eventable_id',
+        'read_at'
+    ];
+
+    protected $casts = [
+        'read_at' => 'datetime'
     ];
 
     public function user(): BelongsTo

@@ -30,9 +30,9 @@ class EventResource extends JsonResource
                 Donation::class => DonationResource::class,
                 Subscriber::class => SubscriberResource::class,
             ]),
-            'read_at' => $this->read_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'read_at' => $this->read_at?->format('Y-m-d H:i:s'),
+            'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
+            'updated_at' => $this->updated_at?->format('Y-m-d H:i:s'),
         ];
     }
 }

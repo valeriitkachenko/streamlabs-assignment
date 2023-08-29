@@ -18,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->name('api.')->group(function () {
     Route::prefix('events')->name('events.')->group(function() {
         Route::get('', [EventsController::class, 'index']);
+        Route::get('highlights', [HighlightsController::class, 'index']);
     });
 });
