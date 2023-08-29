@@ -53,7 +53,5 @@ TWITCH_REDIRECT_URI=your_redirect_uri
 ```
 
 ## Additional Notes & Comments
-It was an interesting task, but 4 hours is for sure not enough to complete both backend and frontend parts, so I decided to keep my focus on the backend part. If you want, I can also work on the frontend with more time.
-
 You're welcome to watch a video demo of the backend part by following the link:
 https://drive.google.com/file/d/1YOCestnm07MpzNiPcCOqjHWN1er8FBlU/view?usp=sharing
