@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\SocialAuthProviders;
+use App\Http\Controllers\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/auth/{provider}', [SocialAuthController::class, 'redirect'])
+    ->where('provider',  SocialAuthProviders::allowedRoutesRegex());
+
+Route::get('/auth/{provider}/callback', [SocialAuthController::class, 'callback'])
+    ->where('provider', SocialAuthProviders::allowedRoutesRegex());

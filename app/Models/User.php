@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    public const DEFAULT_TOKEN_NAME = 'auth';
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -66,5 +68,10 @@ class User extends Authenticatable
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function socialProviders(): HasMany
+    {
+        return $this->hasMany(SocialProvider::class);
     }
 }
