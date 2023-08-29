@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Donation;
+use App\Models\Follower;
+use App\Models\MerchSale;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Relation::morphMap([
+            'follower' => Follower::class,
+            'subscriber' => MerchSale::class,
+            'donation' => Donation::class,
+            'merchSale' => MerchSale::class,
+        ]);
     }
 }
