@@ -3,12 +3,17 @@
 namespace App\Services\Auth;
 
 use App\Models\User;
+use App\Services\User\MockDataService;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\NewAccessToken;
 use Laravel\Socialite\AbstractUser as SocialiteUser;
 
 class SocialAuthService
 {
+    public function __construct(
+        protected MockDataService $mockDataService
+    ) {
+    }
 
     public function handleUserLogin(SocialiteUser $socialiteUser, string $provider): NewAccessToken
     {
@@ -16,6 +21,7 @@ class SocialAuthService
             DB::beginTransaction();
 
             $user = $this->createNewUserOrFindExisting($socialiteUser, $provider);
+            $this->seedUserWithMockData($user);
 
             DB::commit();
 
@@ -42,5 +48,12 @@ class SocialAuthService
         ]);
 
         return $user;
+    }
+
+    protected function seedUserWithMockData(User $user)
+    {
+        if ($user->wasRecentlyCreated) {
+            $this->mockDataService->seed($user);
+        }
     }
 }
