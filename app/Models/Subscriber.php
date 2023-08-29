@@ -12,11 +12,11 @@ class Subscriber extends Model
 
     protected $fillable = [
         'name',
-        'amount',
-        'price',
         'user_id',
         'subscription_tier_id'
     ];
+
+    protected $with = ['subscriptionTier'];
 
     public function user(): BelongsTo
     {

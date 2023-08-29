@@ -1,7 +1,7 @@
 <?php
 
 use App\Enums\SocialAuthProviders;
-use App\Http\Controllers\SocialAuthController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
